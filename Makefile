@@ -374,8 +374,8 @@ else ifeq ($(platform), xydds)
 	AR = /opt/xydds/usr/bin/arm-linux-ar
 	fpic := -fPIC
 	SHARED := -shared -Wl,-version-script=link.T -Wl,-no-undefined
-	CFLAGS += -fomit-frame-pointer -ffast-math -marm -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard
-	CFLAGS += -march=armv7-a
+	CFLAGS += -fomit-frame-pointer -ffast-math -marm -mfpu=neon-vfpv4 -mfloat-abi=hard
+	CFLAGS += -DARM -mcpu=cortex-a7
 
 # emscripten
 else ifeq ($(platform), emscripten)
