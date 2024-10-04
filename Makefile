@@ -375,15 +375,7 @@ else ifeq ($(platform), xydds)
 	fpic := -fPIC
 	SHARED := -shared -Wl,-version-script=link.T -Wl,-no-undefined
 	CFLAGS += -fomit-frame-pointer -ffast-math -marm -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=hard
-	ifeq ($(shell echo `$(CC) -dumpversion` "< 4.9" | bc -l), 1)
-	  CFLAGS += -march=armv7-a
-	else
-	  CFLAGS += -march=armv7ve
-	  # If gcc is 5.0 or later
-	  ifeq ($(shell echo `$(CC) -dumpversion` ">= 5" | bc -l), 1)
-	    LDFLAGS += -static-libgcc -static-libstdc++
-	  endif
-	endif
+	CFLAGS += -march=armv7-a
 
 # emscripten
 else ifeq ($(platform), emscripten)
